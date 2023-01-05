@@ -1,0 +1,12 @@
+{
+  "name": "04-01-rest-api-with-express",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "type": "module",
+  "dependencies": {
+    "express": "^4.18.2",
+    "swagger-jsdoc": "^6.2.7",
+    "swagger-ui-express": "^4.6.0"
+  }
+}
