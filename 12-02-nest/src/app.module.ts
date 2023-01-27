@@ -4,6 +4,8 @@ import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { BoardModule } from './apis/boards/boards.module';
+import { ProductCategoryModule } from './apis/productsCategory/productCategory.module';
+import { ProductModule } from './apis/products/products.module';
 
 @Module({
   imports: [
@@ -23,6 +25,8 @@ import { BoardModule } from './apis/boards/boards.module';
       logging: true,
     }),
     BoardModule,
+    ProductCategoryModule,
+    ProductModule,
   ],
   controllers: [],
   providers: [],
