@@ -4,7 +4,6 @@ import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { BoardModule } from './apis/boards/boards.module';
-import { Board } from './apis/boards/entities/board.entity';
 
 @Module({
   imports: [
@@ -19,7 +18,7 @@ import { Board } from './apis/boards/entities/board.entity';
       username: 'root',
       password: '1111',
       database: 'myproject03',
-      entities: [Board],
+      entities: [__dirname + '/apis/**/*.entity.js'],
       synchronize: true,
       logging: true,
     }),
