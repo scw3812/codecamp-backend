@@ -2,7 +2,11 @@ import { Injectable } from '@nestjs/common';
 
 @Injectable()
 export class BoardService {
-  getHello() {
-    return 'Hello World';
+  findAll() {
+    return [];
+  }
+
+  create() {
+    return 'create success';
   }
 }
