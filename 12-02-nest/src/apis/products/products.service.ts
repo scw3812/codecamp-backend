@@ -4,12 +4,15 @@ import { Repository } from 'typeorm';
 import { CreateProductInput } from './dto/createProduct.input';
 import { Product } from './entities/product.entity';
 import { UpdateProductInput } from './dto/updateProduct.input';
+import { ProductSaleslocation } from 'src/apis/productsSaleslocation/entities/productSaleslocation.entity';
 
 @Injectable()
 export class ProductService {
   constructor(
     @InjectRepository(Product)
     private readonly productRepository: Repository<Product>,
+    @InjectRepository(ProductSaleslocation)
+    private readonly productSaleslocationRepository: Repository<ProductSaleslocation>,
   ) {}
 
   async findAll(): Promise<Product[]> {
@@ -21,7 +24,16 @@ export class ProductService {
   }
 
   async create(createProductInput: CreateProductInput): Promise<Product> {
-    return await this.productRepository.save(createProductInput);
+    const { productSaleslocation, ...product } = createProductInput;
+    const location = await this.productSaleslocationRepository.save(
+      productSaleslocation,
+    );
+    const result = await this.productRepository.save({
+      ...product,
+      productSaleslocation: location,
+    });
+
+    return result;
   }
 
   async update(
