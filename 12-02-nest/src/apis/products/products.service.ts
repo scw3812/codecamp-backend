@@ -13,11 +13,11 @@ export class ProductService {
   ) {}
 
   async findAll(): Promise<Product[]> {
-    return await this.productRepository.find();
+    return await this.productRepository.find({ isDeleted: false });
   }
 
   async findOne(id: string): Promise<Product> {
-    return await this.productRepository.findOne({ id });
+    return await this.productRepository.findOne({ id, isDeleted: false });
   }
 
   async create(createProductInput: CreateProductInput): Promise<Product> {
@@ -32,9 +32,20 @@ export class ProductService {
   }
 
   async checkSoldout(id: string): Promise<void> {
-    const product = await this.productRepository.findOne({ id });
+    const product = await this.productRepository.findOne({
+      id,
+      isDeleted: false,
+    });
     if (product.isSoldout) {
       throw new UnprocessableEntityException('이미 판매 완료된 상품입니다.');
     }
+  }
+
+  async delete(id: string): Promise<boolean> {
+    // const result = await this.productRepository.delete(id);
+    // const result = await this.productRepository.update(id, { isDeleted: true });
+    // const result = await this.productRepository.softRemove({ id });
+    const result = await this.productRepository.softDelete({ id });
+    return !!result.affected;
   }
 }

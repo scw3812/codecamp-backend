@@ -1,5 +1,6 @@
 import {
   Column,
+  DeleteDateColumn,
   Entity,
   JoinColumn,
   JoinTable,
@@ -37,6 +38,13 @@ export class Product {
   @Column({ default: false })
   @Field(() => Boolean)
   isSoldout: boolean;
+
+  @Column({ default: false })
+  @Field(() => Boolean)
+  isDeleted: boolean;
+
+  @DeleteDateColumn()
+  deletedAt?: Date;
 
   @JoinColumn()
   @OneToOne(() => ProductSaleslocation)

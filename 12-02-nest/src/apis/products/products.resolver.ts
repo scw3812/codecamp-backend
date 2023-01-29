@@ -33,4 +33,9 @@ export class ProductResolver {
     await this.productService.checkSoldout(id);
     return this.productService.update(id, updateProductInput);
   }
+
+  @Mutation(() => Boolean)
+  deleteProduct(@Args('id') id: string): Promise<boolean> {
+    return this.productService.delete(id);
+  }
 }
