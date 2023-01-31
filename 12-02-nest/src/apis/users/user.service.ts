@@ -12,6 +12,10 @@ export class UserService {
     private readonly userRepository: Repository<User>,
   ) {}
 
+  async findOne(email: string) {
+    return await this.userRepository.findOne({ email });
+  }
+
   async create(createUserInput: CreateUserInput): Promise<User> {
     const { email, password, ...rest } = createUserInput;
     const user = await this.userRepository.findOne({

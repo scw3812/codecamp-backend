@@ -7,6 +7,7 @@ import { BoardModule } from './apis/boards/boards.module';
 import { ProductCategoryModule } from './apis/productsCategory/productCategory.module';
 import { ProductModule } from './apis/products/products.module';
 import { UserModule } from './apis/users/user.module';
+import { AuthModule } from './apis/auth/auth.module';
 
 @Module({
   imports: [
@@ -29,6 +30,7 @@ import { UserModule } from './apis/users/user.module';
     ProductCategoryModule,
     ProductModule,
     UserModule,
+    AuthModule,
   ],
   controllers: [],
   providers: [],
