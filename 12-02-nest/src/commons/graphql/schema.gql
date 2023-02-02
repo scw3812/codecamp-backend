@@ -69,6 +69,7 @@ type Mutation {
   deleteProduct(id: String!): Boolean!
   createUser(createUserInput: CreateUserInput!): User!
   login(email: String!, password: String!): String!
+  restoreAccessToken: String!
 }
 
 input CreateBoardInput {

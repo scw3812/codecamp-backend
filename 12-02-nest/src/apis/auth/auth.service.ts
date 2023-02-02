@@ -12,4 +12,16 @@ export class AuthService {
     );
     return accessToken;
   }
+
+  setRefreshToken(id: string, email: string, res: any) {
+    const refreshToken = this.jwtService.sign(
+      { sub: id, email },
+      { secret: 'refresh-key', expiresIn: '30d' },
+    );
+
+    res.setHeader('Set-Cookie', `refreshToken=${refreshToken}`);
+
+    // res.setHeader('Access-Control-Allow-Origin', 'https://frontend.com');
+    // res.setHeader('Set-Cookie', `refreshToken=${refreshToken}; path=/; domain=.backend.com; SameSite=None; Secure; httpOnly;`);
+  }
 }

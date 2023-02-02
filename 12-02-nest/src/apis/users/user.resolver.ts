@@ -13,7 +13,7 @@ export class UserResolver {
   @UseGuards(GqlAuthAccessGuard)
   @Query(() => User)
   fetchUser(@CurrentUser() user: any): Promise<User> {
-    return this.userService.findOne(user.id);
+    return this.userService.findOne(user.email);
   }
 
   @Mutation(() => User)
