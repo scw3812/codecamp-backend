@@ -70,6 +70,7 @@ type Mutation {
   createUser(createUserInput: CreateUserInput!): User!
   login(email: String!, password: String!): String!
   restoreAccessToken: String!
+  uploadFile(files: [Upload!]!): String!
 }
 
 input CreateBoardInput {
@@ -110,3 +111,6 @@ input CreateUserInput {
   name: String!
   age: Int!
 }
+
+"""The `Upload` scalar type represents a file upload."""
+scalar Upload

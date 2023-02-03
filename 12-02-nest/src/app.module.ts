@@ -8,6 +8,7 @@ import { ProductCategoryModule } from './apis/productsCategory/productCategory.m
 import { ProductModule } from './apis/products/products.module';
 import { UserModule } from './apis/users/user.module';
 import { AuthModule } from './apis/auth/auth.module';
+import { FileModule } from './apis/file/file.module';
 
 @Module({
   imports: [
@@ -32,6 +33,7 @@ import { AuthModule } from './apis/auth/auth.module';
     ProductModule,
     UserModule,
     AuthModule,
+    FileModule,
   ],
   controllers: [],
   providers: [],
